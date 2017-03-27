@@ -57,25 +57,16 @@ for k = 1:M-L+1 % The main loop
 cvx_begin quiet % The begining of the optimization problem
 
 % Define the variables %%% FILL IN %%%
-    variables Q_E(k) Q_G(k) Q_W(k) Q_A_in(k) Q_A_out(k) Q_bp(k) E_A(k)    
+variables 
 
-    
 % Specify the optimization of cost %%% FILL IN %%% 
-     minimize(sum(-P_E(k)*Q_E(k) + (P_G(k)*Q_G(k) + P_W(k)*Q_W(k)))*Ts)
+
 
 % constraints %%% FILL IN %%%
-    subject to                      
-       Q_W_min <= Q_W <= Q_W_max; 
-       Q_G_min <= Q_G <= Q_G_max; 
-       E_A_min <= E_A <= E_A_max 
-       Q_A_in_min <= Q_A_in <= Q_A_in_max; 
-       Q_A_out_min <= Q_A_out <= Q_A_out_max; 
-       
-       Q_W + Q_G == Q_bp + Q_A_in;
-       Q_E == Q_bp + Q_A_out;
+subject to 
+
 
 cvx_end % The end of the optimization problem
-
 cvx_status % Tells whether the problem is solved. 
 %Does not tell you whether the problem is posed correctly. 
 
